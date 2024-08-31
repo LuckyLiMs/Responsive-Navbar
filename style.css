@@ -452,6 +452,7 @@ nav ul li {
 
   .sidebar li a .link_name{
     font-size: 110px;
+    padding-left: 50px;
   }
 
   .sidebar li i {
@@ -496,6 +497,7 @@ nav ul li {
   .sidebar.open li.profile {
     width: 100%;
     padding-top: 200px;
+    height: 600px;
   }
 
   .sidebar li.profile .profile_details {
@@ -534,6 +536,10 @@ nav ul li {
     transition: all 0.5s ease;
     font-size: 120px;
     margin-left: 80%; /* Adiciona uma margem para centralizar o botão */
+  }
+
+  .sidebar.open .profile #log_out {
+    padding-bottom: 300px;
   }
 
   .home-section {
