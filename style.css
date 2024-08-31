@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+  --color-body:#070c0e;
+  --color-default:#071418;
+  --color-second:#0e4d57;
+  --color-terciary: #041b22;
+  --color-white:#fff;
+  --color-light:#ffffff;
+}
+
+
+*{
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  min-height: 100vh;
+  background: var(--color-body); /* excluir depois */
+}
+
+nav{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background: var(--color-terciary);
+	font-size: 0;
+  z-index: 1;
+}
+
+nav ul li {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding-left: 15px;
+}
+
+.navbar i{
+  color:var(--color-white);
+  height: 60px;
+  line-height: 60px;
+  min-width: 50px;
+  font-size: 25px;
+  text-align: center;
+  /* padding-left: 25px; */
+  z-index: 1;
+}
+
+.sidebar{
+  min-height: 100vh;
+  width: 78px;
+  padding: 6px 14px;
+  z-index: 99;
+  background-color: var(--color-default);
+  transition: all .5s ease;
+  position: fixed;
+  top:0;
+  left: 0;
+}
+
+.sidebar.open{
+  width: 250px;
+  z-index: 1;
+}
+
+.sidebar .logo_details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sidebar .logo_details .icon{
+  opacity: 0;
+  transition: all 0.5s ease ;
+}
+
+.sidebar .logo_details .logo_name{
+  color:var(--color-white);
+  font-size: 16px;
+  font-weight: 200;
+  opacity: 0;
+  transition: all .5s ease;
+}
+
+.sidebar.open .logo_details .icon,
+.sidebar.open .logo_details .logo_name{
+  opacity: 1;
+}
+
+.sidebar .logo_details #btn{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.sidebar.open .logo_details #btn{
+  text-align: right;
+}
+
+.sidebar .logo_details #btn2{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.sidebar.open .logo_details #btn2{
+  text-align: right;
+}
+
+.sidebar i{
+  color:var(--color-white);
+  height: 60px;
+  line-height: 60px;
+  min-width: 50px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+
+.sidebar li{
+  position: relative;
+  margin:8px 0;
+  list-style: none;
+}
+
+.sidebar li .tooltip{
+  position: absolute;
+  top:-20px;
+  left:calc(100% + 15px);
+  z-index: 3;
+  background-color: var(--color-white);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+.sidebar.open li .tooltip{
+  display: none;
+}
+
+.sidebar input{
+  font-size: 15px;
+  color: var(--color-white);
+  font-weight: 400;
+  outline: none;
+  height: 35px;
+  width: 35px;
+  border:none;
+  border-radius: 5px;
+  background-color: var(--color-second);
+  transition: all .5s ease;
+}
+
+.sidebar input::placeholder{
+  color:var(--color-light)
+}
+
+.sidebar.open input{
+  width: 100%;
+  padding: 0 20px 0 50px;
+}
+
+.sidebar .bx-search{
+  position: absolute;
+  top:50%;
+  left:0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background-color: var(--color-second);
+  color: var(--color-white);
+}
+
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--color-default);
+  position: relative;
+  transition: all .5s ease;
+  z-index: 12;
+}
+
+.sidebar li a::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  background-color: var(--color-white);
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: left;
+  z-index: -2;
+}
+
+.sidebar li a:hover::after{
+  transform: scaleX(1);
+  color:var(--color-default)
+}
+
+.sidebar li a .link_name{
+  color:var(--color-white);
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar li a:hover .link_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color:var(--color-default)
+}
+
+.sidebar.open li a .link_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar li i{
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom:-8px;
+  padding:10px 14px;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.sidebar.open li.profile{
+  width: 250px;
+}
+
+.sidebar .profile .profile_details{
+  display: flex;
+  align-items: center;
+  flex-wrap:  nowrap;
+}
+
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.sidebar li.profile .name,
+.sidebar li.profile .designation{
+  font-size: 15px;
+  font-weight: 400;
+  color:var(--color-white);
+  white-space: nowrap;
+}
+
+.sidebar li.profile .designation{
+  font-size: 12px;
+}
+
+.sidebar .profile #log_out{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: var(--color-second);
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+
+.home-section{
+  position: relative;
+  background-color: var(--color-body);
+  min-height: 100vh;
+  top:0;
+  left:78px;
+  width: calc(100% - 78px);
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.home-section .text{
+  display: inline-block;
+  color:var(--color-default);
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px;
+}
+
+.sidebar.open ~ .home-section{
+  left:250px;
+  width: calc(100% - 250px);
+}
+
+.home-section .nav #btn{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.home-section.open .nav #btn{
+  text-align: right;
+}
+
+.home-section .nav #btn2{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.home-section.open .nav #btn2{
+  text-align: right;
+}
+
+.home-section i{
+  color:var(--color-white);
+  height: 60px;
+  line-height: 60px;
+  min-width: 50px;
+  font-size: 25px;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Estilos para telas com largura máxima de 1025px */
+@media (max-width: 1025px) {
+  nav {
+    height: 150px;
+  }
+
+  nav i {
+    padding-top: 3rem;
+  }
+
+  .navbar i {
+    font-size: 90px;
+  }
+
+  .sidebar .nav-list {
+    margin-top: 40px;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    overflow-y: auto; /* Permite rolar verticalmente se necessário */
+    max-height: 100vh; /* Garante que a sidebar não ultrapasse a altura da tela */
+  }
+
+  .sidebar.open {
+    display: block;
+    width: 100%;
+  }
+
+  .sidebar .logo_details {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 2rem;
+    height: 110px;
+  }
+
+  .sidebar.open .logo_details .icon {
+    display: none;
+  }
+
+  .sidebar .logo_details .logo_name {
+    font-size: 60px; /* Aumenta o tamanho do texto do nome do logo */
+  }
+
+  .sidebar .logo_details #btn {
+    font-size: 90px; /* Aumenta o tamanho do texto do nome do logo */
+  }
+
+  .sidebar i {
+    font-size: 30px; /* Aumenta o tamanho dos ícones */
+  }
+
+  .sidebar li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .sidebar li a {
+    display: flex;
+    justify-content: flex-start;
+    padding: 30px;
+    font-size: 20px; /* Aumenta o tamanho do texto dos links */
+  }
+
+  .sidebar li a .link_name{
+    font-size: 110px;
+  }
+
+  .sidebar li i {
+    font-size: 120px; /* Aumenta o tamanho dos ícones dentro da lista */
+  }
+
+  .sidebar input {
+    width: calc(100% - 20px); /* Ajusta o tamanho do campo de entrada */
+  }
+
+  .sidebar .bx-search {
+    font-size: 30px; /* Aumenta o tamanho do ícone de busca */
+  }
+
+  .sidebar li img {
+    height: 60px; /* Aumenta o tamanho das imagens de perfil */
+    width: 60px;
+  }
+
+  /* search */
+
+  .sidebar .bx-search{
+    font-size: 120px;
+  }
+
+  .sidebar.open input{
+    height: 180px;
+    font-size: 110px;
+    padding: 0 20px 0 150px;
+  }
+
+  /* profile */
+
+  .sidebar li.profile {
+    height: auto;
+    padding: 15px;
+    margin-top: 15px; /* Adiciona espaço acima da seção de perfil */
+    border-top: 1px solid var(--color-light); /* Adiciona uma borda superior para separação */
+    position: relative; /* Remove o posicionamento fixo */
+  }
+
+  .sidebar.open li.profile {
+    width: 100%;
+    padding-top: 200px;
+  }
+
+  .sidebar li.profile .profile_details {
+    display: flex;
+    align-items: center; /* Alinha a foto e o texto do perfil */
+    flex-wrap: nowrap;
+  }
+
+  .sidebar li.profile .profile_content {
+    margin-left: 10px; /* Adiciona espaço entre a foto e o texto do perfil */
+  }
+
+  .sidebar li.profile .name,
+  .sidebar li.profile .designation {
+    font-size: 100px; /* Aumenta o tamanho da fonte na seção do perfil */
+  }
+
+  .sidebar li img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .sidebar li.profile .designation {
+    font-size: 90px; /* Ajusta o tamanho da fonte do cargo */
+  }
+
+  .sidebar li.profile #log_out {
+    position: static; /* Remove o posicionamento absoluto */
+    background-color: var(--color-second);
+    width: 90px;
+    height: 90px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: right;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    font-size: 120px;
+    margin-left: 80%; /* Adiciona uma margem para centralizar o botão */
+  }
+
+  .home-section {
+    left: 0;
+    width: 100%;
+  }
+}
+
+  /* .sidebar {
+    width: 100%; 
+    position: relative;
+    display: none;
+    height: auto; 
+    overflow: auto;
+  } */
